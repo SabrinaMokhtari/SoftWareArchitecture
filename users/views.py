@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+
+import users
 from .forms import UserRegisterForm, ProfileForm
+from .models import Profile
 
 
 def register(request):
@@ -17,6 +20,8 @@ def register(request):
                 user.save()
             profile_form = profile_form.save(commit=False)
             profile_form.user = user
+            profile_form.mobile = user_form.cleaned_data['mobile']
+            profile_form.email = user_form.cleaned_data['mobile']
             profile_form.save()
             username = user_form.cleaned_data.get('username')
             messages.success(request, f'Your account has been created! You are now able to log in')
@@ -29,4 +34,6 @@ def register(request):
 
 @login_required
 def profile(request):
-    return render(request, 'users/profile.html')
+    user = Profile.objects.filter(user=request.user)[0]
+    print(user.mobile)
+    return render(request, 'users/profile.html', {'mobile': user.mobile, 'type': user.type})

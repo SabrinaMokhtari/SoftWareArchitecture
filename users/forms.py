@@ -11,11 +11,11 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password', 'mobile']
+        fields = ['username', 'email', 'mobile']
 
 
 class ProfileForm(ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['type', 'password']
+        fields = ['type']

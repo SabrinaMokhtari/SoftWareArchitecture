@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 
 
 class Type(models.TextChoices):
-    Student = 'client'
-    Teacher = 'admin'
+    client = 'client'
+    admin = 'admin'
 
 
 class Profile(models.Model):

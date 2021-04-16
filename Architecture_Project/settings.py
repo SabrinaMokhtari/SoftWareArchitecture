@@ -41,7 +41,7 @@ DEFAULT_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-
+'crispy_forms',
 ]
 
 LOCAL_APPS = [
@@ -123,6 +123,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+LOGIN_REDIRECT_URL = '/profile'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
