@@ -1,14 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 
 import users
 from .forms import UserRegisterForm, ProfileForm
 from .models import Profile
 
-
+@csrf_exempt
 def register(request):
     if request.method == 'POST':
+        print(request.POST)
         user_form = UserRegisterForm(request.POST)
         profile_form = ProfileForm(request.POST)
         if user_form.is_valid() and profile_form.is_valid():
