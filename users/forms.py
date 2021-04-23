@@ -13,9 +13,3 @@ class UserRegisterForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'mobile']
 
-
-class ProfileForm(ModelForm):
-
-    class Meta:
-        model = Profile
-        fields = ['type']
